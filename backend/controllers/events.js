@@ -121,7 +121,13 @@ exports.showEvents = async (req,res,next) =>{
     try {
         const userId = req.userData._id;
         
-        const events = await Event.find({creator:{$ne: userId}}).populate('creator',['name']).populate('category').populate('participants'['name']);
+        // const events = await Event.find({creator:{$ne: userId}}).populate('creator',['name']).populate('category').populate('participants'['name']);
+        const events = await Event.find({ creator: { $ne: userId } })
+        .populate('creator', [ 'name' ])
+        .populate('category', [ 'name' ])
+        .populate('participants'['name'])
+        // .populate({ path: 'participants', options: { sort: { participants: -1 } } })
+        .sort({ participants: -1 });
         if(events.length==0) return res.status(404).json({message:"Cant find Events"});
 
         res.status(200).json(events);
