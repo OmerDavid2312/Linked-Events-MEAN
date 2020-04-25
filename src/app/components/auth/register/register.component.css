@@ -1,0 +1,19 @@
+.card{
+    margin : auto;
+    margin-top: 9rem;
+}
+.border-main{
+    box-shadow: 3px 3px   #1DA0F2;
+ 
+}
+h2{
+    font-weight: bold;
+    color: #1DA0F2;
+    font-size: 1.4rem;
+}
+
+.text-main{
+    color: #1DA0F2;
+
+}
+  

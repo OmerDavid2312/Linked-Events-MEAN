@@ -1,0 +1,27 @@
+<div class="card border-main mb-3 primary" style="max-width: 35rem;">
+  
+
+    <div class="card-header mt-3 text-center">
+        <h2>Register</h2>
+    </div>
+    <flash-messages></flash-messages>
+    <div class="card-body text-main font-weight-bold">
+        <form (submit)="onSubmit()">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" [(ngModel)]="email" id="email" name="email" placeholder="alex@linked-events.com">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" [(ngModel)]="password" id="password" name="password" placeholder="****">
+            </div>
+            <div class="form-group">
+                <label for="name">Username</label>
+                <input type="text" class="form-control" [(ngModel)]="username" id="name" name="name" placeholder="Alex">
+              </div>
+
+            <button type="submit" class="btn btn-block btn-main text-white font-weight-bold" [disabled]="!username || !email || !password">Register</button>
+          </form>
+          <a routerLink="/login" class="btn mt-1 btn-dark btn-block">Have an account ? Login here</a>
+    </div>
+  </div>

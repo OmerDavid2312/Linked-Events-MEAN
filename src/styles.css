@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+
+body{background-color: #181818; font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;}
+.primary{background-color: #212121 !important;}
+.primary-darker {background-color: #181818;}
+.text-main{
+    color: #1DA0F2 !important;
+
+}
+
+.border-main{
+    border: solid 1px #1DA0F2;
+}
+
+.top-border-main{
+    border-top: solid 2px #1DA0F2;
+}
+
+.btn-main{
+    background-color: #1DA0F2;
+}
+.btn-main:active{
+    background-color: rgb(23, 116, 173) ;
+}
+.bg-main{
+    background-color: #1DA0F2 !important;
+}
+
+.bg-four{
+    background-color: #4638c2;
+}
+.bg-five{
+    background-color: #1e2833;
+}
+
+
+
+.form-control{
+    background-color: #212121 !important;
+    color: white !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 2px solid #3b3b3b;
+}
+.form-control:active{
+    background-color: #212121 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 2px solid #3b3b3b; 
+}
+.form-control:focus{
+    background-color: #212121 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 2px solid #1DA0F2; 
+    box-shadow: 0 2px 2px -2px #1DA0F2;
+   
+}
+
+

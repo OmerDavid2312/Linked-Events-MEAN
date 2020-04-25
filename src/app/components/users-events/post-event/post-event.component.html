@@ -1,0 +1,74 @@
+<app-header></app-header>
+
+
+<div class="container mt-5">
+    <flash-messages></flash-messages>
+  <div class="row">
+    <div class="col-lg-8">
+        <div class="card  mb-3 primary ">
+            <div class="card-header mt-3 text-center ">
+                <h3 class=" font-weight-bold text-white"><strong class="text-main">Create</strong> an Event.</h3>
+            </div>
+            
+            <div class="card-body text-main font-weight-bold top-border-main">
+                <form (submit)="onSubmit()">
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" [(ngModel)]="name" id="name" name="name" placeholder="Learning MEAN Stack" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="description">Description</label>
+                      <textarea name="description" id="description" class="form-control" cols="30" rows="6"  [(ngModel)] = "description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="maxparticipants">Max Participants</label>
+                        <input type="number" class="form-control" [(ngModel)]="maxparticipants" id="maxparticipants" name="maxparticipants" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Category</label>
+                        <select class="form-control" name="category" [(ngModel)]="category">
+                            <option *ngFor="let category of categories" value="{{category._id}}" >{{category.name}}</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="eventdate">Date and time</label>
+
+                          <input class="form-control" type="datetime-local" [(ngModel)]="eventdate"  name="eventdate">
+                    
+                      </div>
+        
+                    <button type="submit" class="btn btn-block btn-success text-white font-weight-bold" [disabled]="!this.name || !this.description || !this.eventdate || !this.maxparticipants || !this.category" >Add Event</button>
+                  </form>
+            </div>
+          </div>
+
+    </div>
+    <div class="col-lg-4 font-weight-bold">
+      <div class="card primary text-center" style="width: 100%;">
+        <div class="card-body">
+          <p class="card-text text-white"><i class="fas fa-info-circle mr-2"></i>Create your own event</p>
+        </div>
+      </div>
+
+      <div class="card bg-info text-center mt-2" style="width: 100%;">
+        <div class="card-body">
+          <p class="card-text text-white"><i class="fas fa-glass-cheers mr-2"></i>   Choose a clear event name</p>
+        </div>
+      </div>
+      <div class="card bg-navy text-center mt-2" style="width: 100%;">
+        <div class="card-body">
+          <p class="card-text text-white"><i class="fas fa-comment-dots mr-2"></i>   Craft a compelling event description</p>
+        </div>
+      </div>
+      <div class="card bg-sandybrown text-center mt-2" style="width: 100%;">
+        <div class="card-body">
+          <p class="card-text text-white"><i class="fas fa-users mr-2 text"></i> More Participants, More success !  </p>
+        </div>
+      </div>
+
+
+    
+    </div>
+
+  </div>
+</div>

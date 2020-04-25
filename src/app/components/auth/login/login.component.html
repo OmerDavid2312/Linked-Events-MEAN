@@ -1,0 +1,26 @@
+<ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" color="#1DA0F2" size="medium"></ngx-spinner>
+
+<div class="card border-main mb-3 primary" style="max-width: 35rem;">
+    <div class="card-header mt-3 text-center">
+
+      <i class="fas fa-lock text-main mb-2" style="font-size: 40px;"></i>
+        <h2>Login</h2>
+    </div>
+    <flash-messages></flash-messages>
+    <div class="card-body text-main font-weight-bold">
+        <form (submit)="onSubmit()">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" [(ngModel)]="email" id="email" name="email" placeholder="alex@linked-events.com">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control"  [(ngModel)]="password" id="password" name="password" placeholder="****">
+            </div>
+
+            <button type="submit" class="btn btn-block btn-main text-white font-weight-bold" [disabled]="!password || !email">Login</button>
+          </form>
+          <a routerLink="/register" class="btn mt-1 btn-dark btn-block">Don't have an account ? Register here</a>
+
+    </div>
+  </div>

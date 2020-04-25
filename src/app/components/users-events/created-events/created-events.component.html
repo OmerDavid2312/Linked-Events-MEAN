@@ -1,0 +1,51 @@
+<app-header></app-header>
+
+<div class="primary text-center" style="height: 10%; width: 100%;text-align: center;">
+  <hr>
+    <h2 class="font-italic pt-3 pb-3 text-white font-weight-bold"><strong class="text-main">Manage</strong> Events</h2>
+</div>
+<div class="text-center text-white" *ngIf="isFetched && createdEvents.length==0">
+    <p>Not Found Created Events</p>
+</div>
+<div class="container" >
+  <flash-messages></flash-messages>
+
+  <div class="row mt-5" *ngIf="isFetched">
+      <div class="col-lg-8" *ngIf="createdEvents.length>0">
+        <div *ngFor="let event of createdEvents" class="col">>
+            <div class="card border-main primary mb-3" style="width: 100%;">
+                <div class="card-header text-white"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{event.eventdate || shortdate}}</div>
+                <div class="card-body text-muted">
+                  <h5 class="card-title text-main font-weight-bold ">{{event.name}}</h5>
+                  <i class="{{event.category.icon}} mr-2 text-main"></i>{{event.category.name}}  
+             
+                </div>
+                <div class="card-footer text-muted">
+                  <div class="row">
+                    <div class="col-lg-4" style="padding-top: 5.5px;">
+                      <i class="fas fa-user ml-2 mr-2 text-main"></i> {{event.participants.length>0?event.participants.length:0}} Attendees  
+                    </div>
+                    <div class="col-lg-8 text-center" >
+                      <button routerLink="/myevents/{{event._id}}" class="btn  btn-main text-white font-weight-bold mr-3" ><i class="fas fa-info-circle mr-2"></i>Details</button>
+                      <button (click)="delete(event._id)" class="btn  btn-danger text-white font-weight-bold mr-3" ><i class="fas fa-trash mr-2"></i>Delete</button>
+                      <button routerLink="/myevents/edit/{{event._id}}" class="btn  btn-warning text-white font-weight-bold mr-3" ><i class="fas fa-edit mr-2"></i>Edit</button>
+
+                    </div>
+         
+                  </div>       
+                  </div>
+              </div>
+        
+          </div>
+      </div>
+      <div class="col-lg-4 text-white mt-4 text-center " style="font-size: 1.1rem;">
+        <button routerLink="/myevents/add" class="btn btn-block btn-success font-weight-bold"><i class="fas fa-plus mr-2"></i>Add</button>
+            <button  class="btn btn-block primary font-weight-bold text-white" style="cursor:text !important;"><i class="fas fa-calendar-check text-main mr-2"></i>  Enjoy your Hosted Events</button>     
+            <button  class="btn btn-block primary font-weight-bold text-white" style="cursor:text !important;">  <i class="fas fa-thumbs-up  mr-2 text-main mr-2"></i>{{createdEvents.length}} Events</button>
+      </div>
+
+
+
+</div>
+    
+</div>
