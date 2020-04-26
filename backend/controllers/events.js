@@ -189,7 +189,13 @@ exports.showEvents = async (req, res, next) => {
 
         if (events.length == 0) return res.status(404).json({ message: 'Cant find Events' });
         // -1:1 OR 1:-1 to sort direction
-        const result = events.sort((a, b) => (a.participants < b.participants ? 1 : -1));
+        const result = events.sort((a, b) => {
+            const o1 = a.participants || null;
+            const o2 = b.participants || null;
+
+            if (o1 == o2) return 0;
+            return o1 < o2 ? 1 : -1;
+        });
 
         res.status(200).json(result);
     } catch (error) {
