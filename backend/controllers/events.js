@@ -112,7 +112,7 @@ exports.updateEventById = async (req, res, next) => {
 ////////////////////////////////////////////////////////////////////////////////
 //GET Events to join
 // with aggreagtion
-exports.showEventsAggregate = async (req, res, next) => {
+exports.showEvents = async (req, res, next) => {
     try {
         const userId = req.userData._id;
         console.log('exports.showEvents -> userId', userId);
@@ -161,7 +161,8 @@ exports.showEventsAggregate = async (req, res, next) => {
             { $unwind: '$creator' },
             { $unwind: '$category' },
             { $addFields: { participants_size: { $size: '$participants' } } },
-            { $sort: { participants_size: 1 } },
+            { $sort: { participants_size: -1 } },
+            { $limit: 2 },
         ]);
 
         if (events_aggregate_pipeline.length == 0) return res.status(404).json({ message: 'Cant find Events' });
@@ -174,15 +175,20 @@ exports.showEventsAggregate = async (req, res, next) => {
 };
 
 // with js sort function
-exports.showEvents = async (req, res, next) => {
+exports.showEventsSort = async (req, res, next) => {
     try {
         const userId = req.userData._id;
         console.log('exports.showEvents -> userId', userId);
 
-        const events = await Event.find({ creator: { $ne: userId } })
+        const events = await Event.find(
+            {
+                /*creator: { $ne: userId }*/
+            },
+        )
             .populate('creator', [ 'name' ])
             .populate('category')
             .populate('participants', [ 'name' ])
+            .limit(2)
             .lean();
 
         console.log('exports.showEvents -> events', events);
