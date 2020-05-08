@@ -1,0 +1,6 @@
+<div  class="bg-five text-center" style="height: 10%; width: 100%;text-align: center;">
+    <div *ngIf="categories" class="pt-2 pb-2" style="font-size: 1.3rem;">
+      <span *ngFor="let cat of categories;let i = index" (click)="filter(cat._id)" class="badge badge-pill {{stylePill[i]}} mr-2 ml-2" style="cursor: pointer;"><i class="{{cat.icon}} mr-1"></i>{{cat.name}}</span>
+    </div>
+  
+</div>

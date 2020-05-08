@@ -30,4 +30,8 @@ export class MyEventsService {
   updateEventById(eventID:string,updatedEvent:EventData):Observable<any>{
     return this.http.patch(`${this.URL}/api/myevents/${eventID}`,updatedEvent);
   }
+
+  formatDate(date:string){
+    return new Date(date).toLocaleString();
+  }
 }

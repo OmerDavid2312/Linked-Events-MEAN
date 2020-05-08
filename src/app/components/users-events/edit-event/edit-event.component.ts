@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -27,7 +28,7 @@ export class EditEventComponent implements OnInit {
   isFetched:boolean = false;
   id:string;
 
-  constructor(private myeventSrv:MyEventsService,private categoriesSrv:CategoriesService,private spinner: NgxSpinnerService,private router:Router,private route:ActivatedRoute,private flashmessage:FlashMessagesService) { }
+  constructor(private myeventSrv:MyEventsService,private categoriesSrv:CategoriesService,private spinner: NgxSpinnerService,private router:Router,private route:ActivatedRoute,private flashmessage:FlashMessagesService,private authSrv:AuthService) { }
 
   ngOnInit() {
     this.spinner.show()
@@ -53,6 +54,15 @@ export class EditEventComponent implements OnInit {
       this.spinner.hide();
       
     },err=>{
+      //unauthorized
+       if(err.status == 401)
+       {
+         this.authSrv.logout();
+         this.router.navigateByUrl('/login');
+         this.spinner.hide();
+         return;
+       }
+      
       this.spinner.hide();
       //cant find event
       if(err.status == 404)
@@ -77,11 +87,11 @@ export class EditEventComponent implements OnInit {
     
     if(!this.name || !this.description || !this.eventdate || !this.maxparticipants || !this.category)
     { 
-      return this.flashmessage.show('Please fill out the form',{cssClass:'alert-success text-center font-weight-bold',timeout:4000});
+      return this.flashmessage.show('Please fill out the form',{cssClass:'alert-danger text-center font-weight-bold',timeout:4000});
     }
     if(this.maxparticipants< this.participants )
     {
-      return this.flashmessage.show(`Already have ${this.participants} in the event, You cant set number of  max participants below ! `,{cssClass:'alert-success text-center font-weight-bold',timeout:4000});
+      return this.flashmessage.show(`Already have ${this.participants} in the event, You cant set number of  max participants below ! `,{cssClass:'alert-danger text-center font-weight-bold',timeout:4000});
 
     }
     this.event = { name:this.name, description:this.description, maxparticipants:this.maxparticipants, category:this.category, eventdate:new Date(this.eventdate)  }
@@ -98,6 +108,14 @@ export class EditEventComponent implements OnInit {
         },2001);
       }
     },err=>{
+       //unauthorized
+       if(err.status == 401)
+       {
+         this.authSrv.logout();
+         this.router.navigateByUrl('/login');
+         this.spinner.hide();
+         return;
+       }
       this.spinner.hide();
       const error =  err.error.message || err.error.errors[0]['msg'];
       this.flashmessage.show(error,{cssClass:'alert-danger text-center font-weight-bold',timeout:2000});

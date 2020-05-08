@@ -15,6 +15,23 @@ export class EventsService {
     return this.http.get(`${this.URL}/api/events`);
   }
 
+  getNewEvents():Observable<any>{
+    return this.http.get(`${this.URL}/api/events/new`);
+  }
+
+  getEventsBasedProfile():Observable<any>{
+    return this.http.get(`${this.URL}/api/events/basedProfile`);
+  }
+  
+
+  getEventsByCategory(categoryID:string):Observable<any>{
+    return this.http.get(`${this.URL}/api/events/category/${categoryID}`);
+  }
+
+  getPopularEvents():Observable<any>{
+    return this.http.get(`${this.URL}/api/events/popular`);
+  }
+
   getEventDetails(eventid:string):Observable<any>{
     return this.http.get(`${this.URL}/api/events/id/${eventid}`);
   }
@@ -25,6 +42,10 @@ export class EventsService {
 
   joinEvent(eventid:string):Observable<any>{
     return this.http.patch(`${this.URL}/api/events/join/${eventid}`,{_id:eventid});
+  }
+
+  formatDate(date:string){
+    return new Date(date).toLocaleString();
   }
 
 

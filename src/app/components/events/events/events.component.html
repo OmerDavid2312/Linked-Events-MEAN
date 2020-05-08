@@ -1,10 +1,14 @@
 <app-header></app-header>
-<div class="container" *ngIf="isFetched">
+<app-category-header></app-category-header>
+
+<div class="container">
   <flash-messages></flash-messages>
-  <div class="row mt-5">
-    <div *ngFor="let event of events" class="col-lg-4 col-md-6 mt-4">
+  
+  <h3 class="mt-5 font-weight-bold text-main" *ngIf="popularisFetched" >Popular Online Events</h3>
+  <div class="row mt-2" *ngIf="popularisFetched">
+    <div *ngFor="let event of popularEvents" class="col-xl-4 col-lg-6 col-md-6 mt-4">
     <div class="card border-main primary mb-3" style="width: 100%;">
-        <div class="card-header text-white"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{event.eventdate || shortdate}}</div>
+        <div class="card-header text-white font-weight-bold"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{eventSrv.formatDate(event.eventdate) }}</div>
         <div class="card-body text-muted">
           <h5 class="card-title text-main font-weight-bold ">{{event.name.length>25?event.name.substring(0,25)+ '...':event.name}}</h5>
           <i class="{{event.category.icon}} mr-2 text-main"></i>{{event.category.name}}  
@@ -24,8 +28,69 @@
       </div>
 
   </div>
+  
 
 
 </div>
-    
+<hr style="border: 2px solid #303030; width: 100% !important;" *ngIf="popularisFetched">
+
+<h3 class="mt-5 font-weight-bold text-main" *ngIf="newisFetched" >New Events</h3>
+<div class="row mt-2" *ngIf="newisFetched">
+  <div *ngFor="let event of newEvents" class="col-xl-4 col-lg-6 col-md-6 mt-4">
+  <div class="card border-main primary mb-3" style="width: 100%;">
+      <div class="card-header text-white font-weight-bold"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{eventSrv.formatDate(event.eventdate) }}</div>
+      <div class="card-body text-muted">
+        <h5 class="card-title text-main font-weight-bold ">{{event.name.length>25?event.name.substring(0,25)+ '...':event.name}}</h5>
+        <i class="{{event.category.icon}} mr-2 text-main"></i>{{event.category.name}}  
+   
+      </div>
+      <div class="card-footer text-muted">
+        <div class="row">
+          <div class="col" style="padding-top: 5.5px;">
+            <i class="fas fa-user ml-2 mr-2 text-main"></i> {{event.participants.length>0?event.participants.length:0}} Attendees  
+          </div>
+          <div class="col" >
+            <button routerLink="events/{{event._id}}" class="btn btn-block btn-main text-white font-weight-bold" ><i class="fas fa-info-circle mr-2"></i>Details</button>
+          </div>
+
+        </div>       
+        </div>
+    </div>
+
+</div>
+
+
+
+</div>
+<hr style="border: 2px solid #303030; width: 100% !important;" *ngIf="newisFetched">
+
+
+<h3 class="mt-5 font-weight-bold text-main" *ngIf="basedProfileisFetched" >Based Your Profile</h3>
+<div class="row mt-2" *ngIf="basedProfileisFetched">
+  <div *ngFor="let event of eventsBasedProfile" class="col-xl-4 col-lg-6 col-md-6 mt-4">
+  <div class="card border-main primary mb-3" style="width: 100%;">
+      <div class="card-header text-white font-weight-bold"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{eventSrv.formatDate(event.eventdate) }}</div>
+      <div class="card-body text-muted">
+        <h5 class="card-title text-main font-weight-bold ">{{event.name.length>25?event.name.substring(0,25)+ '...':event.name}}</h5>
+        <i class="{{event.category.icon}} mr-2 text-main"></i>{{event.category.name}}  
+   
+      </div>
+      <div class="card-footer text-muted">
+        <div class="row">
+          <div class="col" style="padding-top: 5.5px;">
+            <i class="fas fa-user ml-2 mr-2 text-main"></i> {{event.participants.length>0?event.participants.length:0}} Attendees  
+          </div>
+          <div class="col" >
+            <button routerLink="events/{{event._id}}" class="btn btn-block btn-main text-white font-weight-bold" ><i class="fas fa-info-circle mr-2"></i>Details</button>
+          </div>
+
+        </div>       
+        </div>
+    </div>
+
+</div>
+</div>
+<hr style="border: 2px solid #303030; width: 100% !important;" *ngIf="basedProfileisFetched">
+
+
 </div>

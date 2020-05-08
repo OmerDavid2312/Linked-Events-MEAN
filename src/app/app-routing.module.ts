@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { LoginComponent } from './components/auth/login/login.component';
 //Events
 import { EventsComponent } from './components/events/events/events.component';
+import { CategoryEventsComponent } from './components/events/category-events/category-events.component';
 import { JoinedEventsComponent } from './components/events/joined-events/joined-events.component';
 import { EventDetailComponent } from './components/events/event-detail/event-detail.component';
 //Users Events
@@ -29,6 +30,7 @@ const routes: Routes = [
   //events
   { path: 'events/joined', component: JoinedEventsComponent , canActivate:[AuthGuard]  }, 
   { path: 'events/:id', component: EventDetailComponent , canActivate:[AuthGuard] }, 
+  { path: 'events/category/:id', component: CategoryEventsComponent , canActivate:[AuthGuard] }, 
   //Users Events
   { path: 'myevents', component: CreatedEventsComponent , canActivate:[AuthGuard] }, 
   { path: 'myevents/add', component: PostEventComponent , canActivate:[AuthGuard] },

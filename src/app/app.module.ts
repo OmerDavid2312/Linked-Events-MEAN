@@ -28,13 +28,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './services/auth-interceptor';
 import { AuthGuard } from './guards/auth.guard';
 
-
-//REMOVE
+//Addons
+import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { ShareButtonsConfig, ShareModule } from '@ngx-share/core';
+import { ShareModule } from '@ngx-share/core';
 import { ShareButtonsModule } from '@ngx-share/buttons';
-import { SocialShareComponent} from './components/social.component';
+import { SocialShareComponent} from './components/utils/social.component';
+import { CategoryHeaderComponent } from './components/category-header/category-header.component';
+import { CategoryEventsComponent } from './components/events/category-events/category-events.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { CalendarComponent } from './components/utils/calendar/calendar.component';//for FullCalendar
+
+
 
 
 
@@ -52,7 +57,10 @@ import { SocialShareComponent} from './components/social.component';
     ManageEventComponent,
     EditEventComponent,
     HeaderComponent,
-    SocialShareComponent
+    SocialShareComponent,
+    CategoryHeaderComponent,
+    CategoryEventsComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +72,15 @@ import { SocialShareComponent} from './components/social.component';
     BrowserAnimationsModule,
     ShareButtonsModule,
     FontAwesomeModule,
-    ShareModule.withConfig()
+    ShareModule.withConfig(),
+    FullCalendarModule,
+    ToastrModule.forRoot({
+      progressBar:true,
+      timeOut:5000,
+      closeButton:true
+      
+    })
+    
   ],
   providers: [AuthService,CategoriesService,EventsService,MyEventsService,AuthGuard,{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

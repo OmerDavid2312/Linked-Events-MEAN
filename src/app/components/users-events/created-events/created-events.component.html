@@ -4,17 +4,19 @@
   <hr>
     <h2 class="font-italic pt-3 pb-3 text-white font-weight-bold"><strong class="text-main">Manage</strong> Events</h2>
 </div>
-<div class="text-center text-white" *ngIf="isFetched && createdEvents.length==0">
-    <p>Not Found Created Events</p>
+<div class="text-center text-white mt-5" *ngIf="isFetched && createdEvents.length==0">
+    <h3>No Created Events Yet ...</h3>
+    <br>
+    <i class="far fa-frown text-main" style="font-size: 3rem;"></i>
 </div>
 <div class="container" >
   <flash-messages></flash-messages>
 
   <div class="row mt-5" *ngIf="isFetched">
       <div class="col-lg-8" *ngIf="createdEvents.length>0">
-        <div *ngFor="let event of createdEvents" class="col">>
+        <div *ngFor="let event of createdEvents" class="col">
             <div class="card border-main primary mb-3" style="width: 100%;">
-                <div class="card-header text-white"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{event.eventdate || shortdate}}</div>
+                <div class="card-header text-white"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{myeventSrv.formatDate(event.eventdate)}}</div>
                 <div class="card-body text-muted">
                   <h5 class="card-title text-main font-weight-bold ">{{event.name}}</h5>
                   <i class="{{event.category.icon}} mr-2 text-main"></i>{{event.category.name}}  

@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth.service';
 import { CategoriesService } from './../../../services/categories.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -24,13 +25,22 @@ export class PostEventComponent implements OnInit {
   eventdate:Date
 
 
-  constructor(private myeventSrv:MyEventsService,private categoriesSrv:CategoriesService,private spinner: NgxSpinnerService,private router:Router,private route:ActivatedRoute,private flashmessage:FlashMessagesService) { }
+  constructor(private myeventSrv:MyEventsService,private categoriesSrv:CategoriesService,private spinner: NgxSpinnerService,private router:Router,private route:ActivatedRoute,private flashmessage:FlashMessagesService,private authSrv:AuthService) { }
 
   ngOnInit() {
     this.spinner.show()
     this.categoriesSrv.getCategories().subscribe(categories=>{
       this.categories = categories;
       this.spinner.hide();
+    },err=>{
+      //unauthorized
+      if(err.status == 401)
+      {
+        this.authSrv.logout();
+        this.router.navigateByUrl('/login');
+        this.spinner.hide();
+        return;
+      }
     })
   }
 
@@ -38,7 +48,7 @@ export class PostEventComponent implements OnInit {
     
     if(!this.name || !this.description || !this.eventdate || !this.maxparticipants || !this.category)
     { 
-      return this.flashmessage.show('Please fill out the form',{cssClass:'alert-danger',timeout:4000});
+      return this.flashmessage.show('Please fill out the form',{cssClass:'alert-danger text-center font-weight-bold',timeout:4000});
     }
 
     this.newEvent = { name:this.name, description:this.description, maxparticipants:this.maxparticipants, category:this.category, eventdate:new Date(this.eventdate)  }
@@ -59,5 +69,7 @@ export class PostEventComponent implements OnInit {
     
 
   }
+
+
 
 }

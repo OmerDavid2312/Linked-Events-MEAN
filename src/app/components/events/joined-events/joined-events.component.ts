@@ -1,3 +1,5 @@
+import { AuthService } from './../../../services/auth.service';
+import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { EventData } from './../../../models/Event';
 import { EventsService } from './../../../services/events.service';
@@ -13,8 +15,9 @@ export class JoinedEventsComponent implements OnInit {
 
   joinedEvents:EventData[] = [];
   isFetched:boolean =false
+
   
-  constructor(private eventSrv:EventsService,private spinner: NgxSpinnerService,private flashmessage:FlashMessagesService) { }
+  constructor(private eventSrv:EventsService,private spinner: NgxSpinnerService,private flashmessage:FlashMessagesService,private router:Router,private authSrv:AuthService) { }
 
   ngOnInit() {
     this.isFetched=false;
@@ -24,9 +27,17 @@ export class JoinedEventsComponent implements OnInit {
       this.isFetched = true;
       setTimeout(()=>{
         this.spinner.hide();
-      },700)
+      },400)
 
     },err=>{
+     //unauthorized
+      if(err.status == 401)
+      {
+        this.authSrv.logout();
+        this.router.navigateByUrl('/login');
+        this.spinner.hide();
+        return;
+      }
       this.isFetched = true;
       this.spinner.hide();
       const error =  err.error.message || err.error.errors[0]['msg'];

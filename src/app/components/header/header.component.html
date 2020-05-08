@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light primary" style="border-bottom: 0.5px solid #1DA0F2 ;">
-    <a class="navbar-brand text-main " routerLink="/"><i class="fas fa-globe"></i> Linked-Events</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand text-main brand-font " routerLink="/"><i class="fas fa-globe"></i> Linked Events</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="collapse navbar-collapse" id="navbarMain"  style="font-size: 1.1rem ;">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link text-main" routerLink="/">Home </a>
@@ -16,6 +16,7 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto mr-2">
+        <li *ngIf="isFetched" style="cursor: pointer;" (click)="showNotfications()" class="nav-item"><a class="nav-link text-white"><i class="fas fa-bell mr-2 text-warning font-weight-bold"></i><span class="badge badge-light">{{NotficationEvents.length}}</span></a></li>
         <li class="nav-item"><a class="nav-link text-white" ><i class="fas fa-user mr-2 text-main text-main font-weight-bold"></i>{{username}}</a></li>
         <li  class="nav-item ml-1" ><a (click)="logout()" style="cursor: pointer;" class=" nav-link text-white "><i class="fas fa-sign-out-alt text-danger"></i> Log Out</a></li>
 
@@ -23,3 +24,5 @@
       
     </div>
   </nav>
+
+  

@@ -1,6 +1,9 @@
 nav{
     font-size: 1.1rem;
 }
+.brand-font{
+    font-family: 'Shrikhand', cursive !important;
+}
 .navbar-brand{
     font-size: 1.4rem;
     margin-left: 10px;
