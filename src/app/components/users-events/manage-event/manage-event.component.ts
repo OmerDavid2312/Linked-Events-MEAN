@@ -16,22 +16,21 @@ export class ManageEventComponent implements OnInit {
   event:EventData;
   precent:number;
   id:string;
+  isFetched:boolean = false;
 
   constructor(private myeventSrv:MyEventsService,private spinner: NgxSpinnerService,private router:Router,private route:ActivatedRoute,private flashmessage:FlashMessagesService,private authSrv:AuthService) { }
 
 
   ngOnInit() {
+    this.isFetched = false;
     this.spinner.show();
     this.id = this.route.snapshot.paramMap.get('id');
     this.myeventSrv.getCreatedEventById(this.id).subscribe(event=>{
       this.event = event;
       this.precent = event.participants.length > 0?Math.floor((event.participants.length/event.maxparticipants)*100) : 0;
-      setTimeout(()=>{
-        this.spinner.hide();
-
-      },1000)
+      this.isFetched = true;
+      this.spinner.hide();
      
-      
     },err=>{
        //unauthorized
        if(err.status == 401)

@@ -40,7 +40,7 @@ exports.createdEvents = async (req,res,next) =>{
     try {
         const creator = req.userData._id;
         
-        const createdEvents = await Event.find({creator:creator}).populate('creator',['name']).populate('category').populate('participants'['name']);
+        const createdEvents = await Event.find({creator:creator}).populate('creator',['name']).populate('category').populate('participants'['name']).sort({createdAt:-1});
         if(createdEvents.length==0) return res.status(404).json({message:"Cant find Events"});
 
         res.status(200).json(createdEvents);
@@ -290,7 +290,7 @@ exports.showJoinedEvent = async (req,res,next) =>{
     try {
         const userId = req.userData._id;
         
-        const joinedEvents = await Event.find({participants:userId}).populate('creator',['name']).populate('category').populate('participants'['name']);
+        const joinedEvents = await Event.find({participants:userId}).populate('creator',['name']).populate('category').populate('participants'['name']).sort({eventdate:-1});
         if(joinedEvents.length==0) return res.status(404).json({message:"Cant find Events"});
 
         res.status(200).json(joinedEvents);

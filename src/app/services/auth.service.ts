@@ -34,6 +34,6 @@ export class AuthService {
   }
   
 
-  //TODO
-  //remove auth with EXPIRE TIME !!!!!!
+
+
 }

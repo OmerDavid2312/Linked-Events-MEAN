@@ -17,14 +17,17 @@ export class EventDetailComponent implements OnInit {
   event:EventData;
   id:string;
   precent:number;
+  isFetched:boolean= false;
   constructor(private eventSrv:EventsService,private spinner: NgxSpinnerService,private router:Router,private route:ActivatedRoute,private flashmessage:FlashMessagesService,private authSrv:AuthService) { }
 
   ngOnInit() {
+    this.isFetched = false;
     this.spinner.show();
     this.id = this.route.snapshot.paramMap.get('id');
     this.eventSrv.getEventDetails(this.id).subscribe(event=>{
       this.event = event;
       this.precent = event.participants.length > 0?Math.floor((event.participants.length/event.maxparticipants)*100) : 0;
+      this.isFetched = true;
       this.spinner.hide();
       
     },err=>{

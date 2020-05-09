@@ -16,7 +16,7 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto mr-2">
-        <li *ngIf="isFetched" style="cursor: pointer;" (click)="showNotfications()" class="nav-item"><a class="nav-link text-white"><i class="fas fa-bell mr-2 text-warning font-weight-bold"></i><span class="badge badge-light">{{NotficationEvents.length}}</span></a></li>
+        <li  style="cursor: pointer;" (click)="showNotfications()" class="nav-item"><a class="nav-link text-white"><i class="fas fa-bell mr-2 text-warning font-weight-bold"></i><span class="badge badge-light">{{NotficationEvents.length}}</span></a></li>
         <li class="nav-item"><a class="nav-link text-white" ><i class="fas fa-user mr-2 text-main text-main font-weight-bold"></i>{{username}}</a></li>
         <li  class="nav-item ml-1" ><a (click)="logout()" style="cursor: pointer;" class=" nav-link text-white "><i class="fas fa-sign-out-alt text-danger"></i> Log Out</a></li>
 
