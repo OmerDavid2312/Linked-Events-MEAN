@@ -4,11 +4,21 @@
   <hr>
     <h2 class="font-italic pt-3 pb-3 text-white font-weight-bold"><strong class="text-main">Manage</strong> Events</h2>
 </div>
+
 <div class="text-center text-white mt-5" *ngIf="isFetched && createdEvents.length==0">
-    <h3>No Created Events Yet ...</h3>
-    <br>
-    <i class="far fa-frown text-main" style="font-size: 3rem;"></i>
+  <div class=" text-main">
+    
+    <h2>
+        Can not find Events</h2>
+    <div class=" text-muted">
+        Add your first Event and join the party !
+    </div>
+    <div>
+      <button routerLink="/myevents/add" class="btn mt-3 btn-success font-weight-bold"><i class="fas fa-plus mr-2"></i>Add your first Event </button>
+    </div>
 </div>
+</div>
+
 <div class="container" >
   <flash-messages></flash-messages>
 
@@ -40,8 +50,8 @@
         
           </div>
       </div>
-      <div class="col-lg-4 text-white mt-4 text-center " style="font-size: 1.1rem;">
-        <button routerLink="/myevents/add" class="btn btn-block btn-success font-weight-bold"><i class="fas fa-plus mr-2"></i>Add</button>
+      <div *ngIf="createdEvents.length>0" class="col-lg-4 text-white mt-4 text-center " style="font-size: 1.1rem;">
+           <button routerLink="/myevents/add" class="btn btn-block btn-success font-weight-bold"><i class="fas fa-plus mr-2"></i>Add</button>
             <button  class="btn btn-block primary font-weight-bold text-white" style="cursor:text !important;"><i class="fas fa-calendar-check text-main mr-2"></i>  Enjoy your Hosted Events</button>     
             <button  class="btn btn-block primary font-weight-bold text-white" style="cursor:text !important;">  <i class="fas fa-thumbs-up  mr-2 text-main mr-2"></i>{{createdEvents.length}} Events</button>
       </div>

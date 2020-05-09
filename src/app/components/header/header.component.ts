@@ -44,9 +44,6 @@ export class HeaderComponent implements OnInit {
          
       });
       this.isFetched = true
-    },err=>{
-      console.log(err);
-      
     })
   }
   showNotfications(){

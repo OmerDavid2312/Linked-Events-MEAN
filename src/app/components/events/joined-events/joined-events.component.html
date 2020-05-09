@@ -4,10 +4,18 @@
   <hr>
     <h2 class="font-italic pt-3 pb-3 text-white font-weight-bold"><strong class="text-main">Joined</strong> Events</h2>
 </div>
-<div class="text-center text-white" *ngIf="isFetched && joinedEvents.length==0">
-    <h5>No Joined Events Yet ...</h5>
-    <br>
-    <i class="far fa-frown text-main" style="font-size: 4rem;"></i>
+<div class="text-center text-white mt-5" *ngIf="isFetched && joinedEvents.length==0">
+  <div class="text-main">
+    
+    <h2>
+        Can not find Events</h2>
+    <div class=" text-muted">
+        Attend awesome Events !
+    </div>
+    <div >
+      <button routerLink="/" class="btn mt-3 btn-success font-weight-bold"><i class="fas fa-glass-cheers  mr-2"></i>Find Events </button>
+    </div>
+</div>
 </div>
 <div class="container">
   <flash-messages></flash-messages>
@@ -37,7 +45,7 @@
         
           </div>
       </div>
-      <div class="col-lg-4 text-white " style="font-size: 1.1rem;" *ngIf="isFetched">
+      <div class="col-lg-4 text-white " style="font-size: 1.1rem;" *ngIf="isFetched && joinedEvents.length>0 ">
         <button  class="btn btn-block primary font-weight-bold text-white" style="cursor:text !important;"><i class="fas fa-calendar-check text-main mr-2"></i>  Enjoy your Attends</button>     
         <button  class="btn btn-block primary font-weight-bold text-white mb-5" style="cursor:text !important;">  <i class="fas fa-thumbs-up  mr-2 text-main mr-2"></i>{{joinedEvents.length}} Events</button>
         <app-calendar *ngIf="joinedEvents" [events]="joinedEvents"></app-calendar>
