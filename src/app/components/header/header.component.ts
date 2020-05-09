@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   isFetched:boolean = false;
   NotficationEvents:EventData[] = [];
   nowDate:string = new Date().toLocaleDateString();
+  
   constructor(private auth_srv:AuthService,private router:Router,private eventSrv:EventsService,private toastSrv:ToastrService) { 
     this.username = localStorage.getItem('user');
     
