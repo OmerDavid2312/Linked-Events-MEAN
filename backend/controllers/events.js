@@ -121,7 +121,7 @@ exports.showEvents = async (req,res,next) =>{
     try {
         const userId = req.userData._id;
         
-        const events = await Event.find({creator:{$ne: userId}}).populate('creator',['name']).populate('category').populate('participants'['name']);
+        const events = await Event.find({creator:{$ne: userId},eventdate:{$gte:new Date().toISOString()}}).populate('creator',['name']).populate('category').populate('participants'['name']);
         if(events.length==0) return res.status(404).json({message:"Cant find Events"});
    
        
@@ -147,7 +147,7 @@ exports.eventsBasedProfile = async (req,res,next) =>{
            categoriesSuggestions.push(event.category);
         }
         //get suggestions based categoties of last joined Events
-        const events = await Event.find({creator:{$ne: userId},category: { $in: categoriesSuggestions },participants:{$ne: userId}}).populate('creator',['name']).populate('category').populate('participants'['name']).limit(6);
+        const events = await Event.find({creator:{$ne: userId},category: { $in: categoriesSuggestions },participants:{$ne: userId},eventdate:{$gte:new Date().toISOString()}}).populate('creator',['name']).populate('category').populate('participants'['name']).limit(6);
         if(events.length==0) return res.status(404).json({message:"Cant find Events"});
         
         res.status(200).json(events); 
@@ -162,7 +162,7 @@ exports.newEvents = async (req,res,next) =>{
     try {
         const userId = req.userData._id;
         
-        const events = await Event.find({creator:{$ne: userId}}).populate('creator',['name']).populate('category').populate('participants'['name']).sort({createdAt:-1}).limit(6);
+        const events = await Event.find({creator:{$ne: userId},eventdate:{$gte:new Date().toISOString()}}).populate('creator',['name']).populate('category').populate('participants'['name']).sort({createdAt:-1}).limit(6);
         if(events.length==0) return res.status(404).json({message:"Cant find Events"});
         
         res.status(200).json(events); 
@@ -178,7 +178,7 @@ exports.showEventsByCategory = async (req,res,next) =>{
         const userId = req.userData._id;
         const categoryid = req.params.id;
         
-        const events = await Event.find({creator:{$ne: userId},category:categoryid}).populate('creator',['name']).populate('category').populate('participants'['name']);
+        const events = await Event.find({creator:{$ne: userId},category:categoryid,eventdate:{$gte:new Date().toISOString()}}).populate('creator',['name']).populate('category').populate('participants'['name']);
         if(events.length==0) return res.status(404).json({message:"Cant find Events"});
    
        
