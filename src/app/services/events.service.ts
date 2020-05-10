@@ -24,8 +24,9 @@ export class EventsService {
   }
   
 
-  getEventsByCategory(categoryID:string):Observable<any>{
-    return this.http.get(`${this.URL}/api/events/category/${categoryID}`);
+  getEventsByCategory(categoryID:string,currentPage:number):Observable<any>{
+     
+    return this.http.get(`${this.URL}/api/events/category/${categoryID}/${currentPage}`);
   }
 
   getPopularEvents():Observable<any>{

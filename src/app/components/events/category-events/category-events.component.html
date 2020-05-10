@@ -6,7 +6,10 @@
   
   <h3 *ngIf="isFetched" class="mt-5 font-weight-bold text-main" >{{events[0].category.name}}</h3>
   <div *ngIf="isFetched" class="row mt-2">
-    <div *ngFor="let event of events" class="col-xl-4 col-lg-6 col-md-6 mt-4">
+    <div *ngFor="let event of events | paginate: { id: 'events',
+        itemsPerPage: 3,
+        currentPage: page,
+        totalItems: totalItem }" class="col-xl-4 col-lg-6 col-md-6 mt-4">
     <div class="card border-main primary mb-3 fade-in" style="width: 100%;">
         <div class="card-header text-white font-weight-bold"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{eventSrv.formatDate(event.eventdate) }}</div>
         <div class="card-body text-muted">
@@ -28,8 +31,11 @@
       </div>
 
   </div>
-  
+ 
 
+</div>
+<div *ngIf="isFetched" class="mt-3 text-center text-white">
+  <pagination-controls class="my-pagination" id="events"  (pageChange)="pageChanged($event)"></pagination-controls>
 
 </div>
 <hr *ngIf="isFetched" style="border: 2px solid #303030; width: 100% !important;">

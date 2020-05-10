@@ -8,3 +8,10 @@
     opacity: 1; transform: scale(1.00);transition: all 0.1s ;
     
 }
+
+.my-pagination::ng-deep .ngx-pagination a {
+    color: white;
+    }
+.my-pagination::ng-deep .ngx-pagination a:hover {
+        background-color: #1e2833;
+  }    

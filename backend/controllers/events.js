@@ -177,12 +177,24 @@ exports.showEventsByCategory = async (req,res,next) =>{
     try {
         const userId = req.userData._id;
         const categoryid = req.params.id;
-        
-        const events = await Event.find({creator:{$ne: userId},category:categoryid,eventdate:{$gte:new Date().toISOString()}}).populate('creator',['name']).populate('category').populate('participants'['name']);
+        //pagination
+        const page = req.params.page || 1; 
+        const eventsPerPage = 3;
+    
+        const events = await Event.find({creator:{$ne: userId},category:categoryid,eventdate:{$gte:new Date().toISOString()}})
+        .skip(eventsPerPage*(page-1))
+        .limit(eventsPerPage)
+        .populate('creator',['name'])
+        .populate('category')
+        .populate('participants'['name']);
         if(events.length==0) return res.status(404).json({message:"Cant find Events"});
+        const count = await Event.find({creator:{$ne: userId},category:categoryid,eventdate:{$gte:new Date().toISOString()}}).countDocuments()
    
        
-        res.status(200).json(events); 
+        res.status(200).json({
+            count:count,
+            data:events
+        }); 
 
         
     } catch (error) {

@@ -39,7 +39,7 @@ import { CategoryEventsComponent } from './components/events/category-events/cat
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarComponent } from './components/utils/calendar/calendar.component';//for FullCalendar
 
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -74,6 +74,7 @@ import { CalendarComponent } from './components/utils/calendar/calendar.componen
     FontAwesomeModule,
     ShareModule.withConfig(),
     FullCalendarModule,
+    NgxPaginationModule,
     ToastrModule.forRoot({
       progressBar:true,
       timeOut:5000,
