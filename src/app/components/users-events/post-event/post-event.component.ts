@@ -20,8 +20,9 @@ export class PostEventComponent implements OnInit {
   
   name:string;
   description:string;
-  maxparticipants:number
-  category:string
+  maxparticipants:number;
+  category:string;
+  link:string;
   eventdate:Date
 
 
@@ -51,7 +52,7 @@ export class PostEventComponent implements OnInit {
       return this.flashmessage.show('Please fill out the form',{cssClass:'alert-danger text-center font-weight-bold',timeout:4000});
     }
 
-    this.newEvent = { name:this.name, description:this.description, maxparticipants:this.maxparticipants, category:this.category, eventdate:new Date(this.eventdate)  }
+    this.newEvent = { name:this.name, description:this.description, maxparticipants:this.maxparticipants, category:this.category,link:this.link, eventdate:new Date(this.eventdate)  }
     this.spinner.show();
     this.myeventSrv.postEvent(this.newEvent).subscribe(res=>{
       this.spinner.hide();

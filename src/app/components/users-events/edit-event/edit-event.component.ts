@@ -22,6 +22,7 @@ export class EditEventComponent implements OnInit {
   maxparticipants:number;
   eventdate:Date;
   category:string;
+  link:string;
   participants:number;
 
   categories:string;
@@ -46,7 +47,8 @@ export class EditEventComponent implements OnInit {
       this.name = event.name;
       this.description = event.description;
       this.maxparticipants = event.maxparticipants;
-      this.category = event.category._id
+      this.category = event.category._id;
+      this.link = event.link;
       this.eventdate = new Date(event.eventdate);
       this.participants = event.participants.length;
 
@@ -94,7 +96,7 @@ export class EditEventComponent implements OnInit {
       return this.flashmessage.show(`Already have ${this.participants} in the event, You cant set number of  max participants below ! `,{cssClass:'alert-danger text-center font-weight-bold',timeout:4000});
 
     }
-    this.event = { name:this.name, description:this.description, maxparticipants:this.maxparticipants, category:this.category, eventdate:new Date(this.eventdate)  }
+    this.event = { name:this.name, description:this.description, maxparticipants:this.maxparticipants, category:this.category,link:this.link, eventdate:new Date(this.eventdate)  }
     
     this.spinner.show();
 

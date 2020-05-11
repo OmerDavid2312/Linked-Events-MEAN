@@ -6,6 +6,7 @@ const eventSchema = mongoose.Schema({
     description: {type:String, required:true},
     maxparticipants: {type:Number, required:true},
     category: { type: mongoose.Schema.Types.ObjectId, ref: "Category", required: true },
+    link: {type:String, required:true},
     participants:[{type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }],
     eventdate: { type : Date, default: Date.now }
 

@@ -24,7 +24,9 @@
       <div class="col-lg-8" *ngIf="joinedEvents.length>0">
         <div *ngFor="let event of joinedEvents" class="col">
             <div class="card border-main primary mb-3" style="width: 100%;" *ngIf="isFetched">
-                <div class="card-header text-white"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{eventSrv.formatDate(event.eventdate)}}</div>
+                <div class="card-header text-white"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{eventSrv.formatDate(event.eventdate)}}
+                  <a class="btn btn-outline-orange ml-5 float-right" [href]="event.link" role="button" target="_blank"><i class="fas fa-mouse-pointer mr-2"></i>Join</a>
+                </div>
                 <div class="card-body text-muted">
                   <h5 class="card-title text-main font-weight-bold ">{{event.name}}</h5>
                   <i class="{{event.category.icon}} mr-2 text-main"></i>{{event.category.name}}  

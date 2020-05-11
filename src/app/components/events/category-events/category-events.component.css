@@ -11,6 +11,7 @@
 
 .my-pagination::ng-deep .ngx-pagination a {
     color: white;
+   
     }
 .my-pagination::ng-deep .ngx-pagination a:hover {
         background-color: #1e2833;

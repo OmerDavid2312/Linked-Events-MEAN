@@ -5,6 +5,7 @@ export interface EventData {
     description:string,
     maxparticipants:number,
     category:string,
+    link:string,
     participants?:[],
     eventdate:Date
 }

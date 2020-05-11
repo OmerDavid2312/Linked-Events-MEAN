@@ -51,7 +51,6 @@ export class CategoryEventsComponent implements OnInit {
           this.subEvents = this.eventSrv.getEventsByCategory(this.id,this.page).subscribe(events=>{
             this.events = events.data;
             this.totalItem = events.count;      
-            console.log('sub!');
                 
             this.spinner.hide();
             this.isFetched = true;
@@ -78,7 +77,7 @@ export class CategoryEventsComponent implements OnInit {
 
   pageChanged(e){
     this.page = e; 
-    //unsubscribe
+    //unsubscribe for ReSubscribe again in the func
     this.subEvents.unsubscribe();
     this.subRoute.unsubscribe();
     this.getEvents();    

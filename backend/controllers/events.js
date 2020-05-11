@@ -15,7 +15,7 @@ exports.addEvent = async (req,res,next) =>{
     try {
 
         const creator = req.userData._id;
-        const {name,description,maxparticipants,category,eventdate} = req.body;
+        const {name,description,maxparticipants,category,link,eventdate} = req.body;
         
         const event = await new Event({
             creator:creator,
@@ -23,6 +23,7 @@ exports.addEvent = async (req,res,next) =>{
             description:description,
             maxparticipants:maxparticipants,
             category:category,
+            link:link,
             eventdate:eventdate
         });
         const savedEvent = await event.save();
@@ -100,11 +101,11 @@ exports.updateEventById = async (req,res,next) =>{
     try {
         const eventId = req.params.id;
         const creator = req.userData._id;
-        const {name,description,maxparticipants,category,eventdate} = req.body;
+        const {name,description,maxparticipants,category,link,eventdate} = req.body;
         
         const eventUpdate = await Event.findOne({_id:eventId,creator:creator});
         if(!eventUpdate) return res.status(404).json({message:"Cant find Event or not legal action"});
-        const updateEve = await eventUpdate.updateOne({name:name,description:description,maxparticipants:maxparticipants,category:category,eventdate:eventdate})
+        const updateEve = await eventUpdate.updateOne({name:name,description:description,maxparticipants:maxparticipants,category:category,link:link,eventdate:eventdate})
         
         res.status(200).json({message:`The event ${name} has updated!`})
 
@@ -149,7 +150,7 @@ exports.eventsBasedProfile = async (req,res,next) =>{
         //get suggestions based categoties of last joined Events
         const events = await Event.find({creator:{$ne: userId},category: { $in: categoriesSuggestions },participants:{$ne: userId},eventdate:{$gte:new Date().toISOString()}}).populate('creator',['name']).populate('category').populate('participants'['name']).limit(6);
         if(events.length==0) return res.status(404).json({message:"Cant find Events"});
-        
+            
         res.status(200).json(events); 
      
     } catch (error) {
@@ -179,7 +180,7 @@ exports.showEventsByCategory = async (req,res,next) =>{
         const categoryid = req.params.id;
         //pagination
         const page = req.params.page || 1; 
-        const eventsPerPage = 3;
+        const eventsPerPage = 6;
     
         const events = await Event.find({creator:{$ne: userId},category:categoryid,eventdate:{$gte:new Date().toISOString()}})
         .skip(eventsPerPage*(page-1))
