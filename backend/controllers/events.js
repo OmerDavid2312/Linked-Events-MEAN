@@ -41,7 +41,7 @@ exports.createdEvents = async (req,res,next) =>{
     try {
         const creator = req.userData._id;
         
-        const createdEvents = await Event.find({creator:creator}).populate('creator',['name']).populate('category').populate('participants'['name']).sort({createdAt:-1});
+        const createdEvents = await Event.find({creator:creator}).populate('creator',['name']).populate('category').populate('participants'['name']).sort({eventdate:-1});
         if(createdEvents.length==0) return res.status(404).json({message:"Cant find Events"});
 
         res.status(200).json(createdEvents);

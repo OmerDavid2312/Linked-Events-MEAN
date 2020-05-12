@@ -19,3 +19,6 @@
     border-color: #e64a19;
     color: white;
 }
+
+.btn-outline-danger:hover{color: white !important;}
+.btn-outline-danger{cursor: auto;}

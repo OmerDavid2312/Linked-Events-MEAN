@@ -15,6 +15,7 @@ export class CreatedEventsComponent implements OnInit {
 
   createdEvents:EventData[] = [];
   isFetched:boolean = false;
+  nowDate:Date = new Date();
   constructor(private myeventSrv:MyEventsService,private spinner: NgxSpinnerService,private flashmessage:FlashMessagesService,private router:Router,private authSrv:AuthService) { }
 
   ngOnInit() {
@@ -78,6 +79,9 @@ export class CreatedEventsComponent implements OnInit {
 
   }
 
+  getDate(date){
+    return new Date(date);
+  }
 }
 
 

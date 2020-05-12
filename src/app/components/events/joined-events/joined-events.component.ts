@@ -15,7 +15,7 @@ export class JoinedEventsComponent implements OnInit {
 
   joinedEvents:EventData[] = [];
   isFetched:boolean =false
-
+  nowDate:Date = new Date();
   
   constructor(private eventSrv:EventsService,private spinner: NgxSpinnerService,private flashmessage:FlashMessagesService,private router:Router,private authSrv:AuthService) { }
 
@@ -43,6 +43,11 @@ export class JoinedEventsComponent implements OnInit {
       const error =  err.error.message || err.error.errors[0]['msg'];
       this.flashmessage.show(error,{cssClass:'alert-danger text-center font-weight-bold',timeout:4000});  
     })
+  }
+  getDate(date:string){
+    
+    return new Date(date);
+    
   }
 
 }

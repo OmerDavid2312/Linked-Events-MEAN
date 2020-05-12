@@ -26,7 +26,10 @@
       <div class="col-lg-8" *ngIf="createdEvents.length>0">
         <div *ngFor="let event of createdEvents" class="col">
             <div class="card border-main primary mb-3" style="width: 100%;">
-                <div class="card-header text-white"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{myeventSrv.formatDate(event.eventdate)}}</div>
+                <div class="card-header text-white"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{myeventSrv.formatDate(event.eventdate)}}
+                  <a *ngIf="nowDate>getDate(event.eventdate)" class="btn btn-outline-danger ml-5 float-right text-muted"><i class="fas fa-calendar-times mr-2 "></i>Past Event</a>
+
+                </div>
                 <div class="card-body text-muted">
                   <h5 class="card-title text-main font-weight-bold ">{{event.name}}</h5>
                   <i class="{{event.category.icon}} mr-2 text-main"></i>{{event.category.name}}  
