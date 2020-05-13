@@ -7,28 +7,28 @@ import { Injectable } from '@angular/core';
 })
 export class MyEventsService {
 
-  private URL = 'http://localhost:3000';
+  
 
   constructor(private http:HttpClient) { }
 
   postEvent(newevent:EventData):Observable<any>{
-    return this.http.post(`${this.URL}/api/myevents/`,newevent);
+    return this.http.post(`/api/myevents/`,newevent);
   }
 
   getCreatedEvents():Observable<any>{
-    return this.http.get(`${this.URL}/api/myevents/`);
+    return this.http.get(`/api/myevents/`);
   }
 
   getCreatedEventById(eventID:string):Observable<any>{
-    return this.http.get(`${this.URL}/api/myevents/${eventID}`);
+    return this.http.get(`/api/myevents/${eventID}`);
   }
 
   deleteEventById(eventID:string):Observable<any>{
-    return this.http.delete(`${this.URL}/api/myevents/${eventID}`);
+    return this.http.delete(`/api/myevents/${eventID}`);
   }
 
   updateEventById(eventID:string,updatedEvent:EventData):Observable<any>{
-    return this.http.patch(`${this.URL}/api/myevents/${eventID}`,updatedEvent);
+    return this.http.patch(`/api/myevents/${eventID}`,updatedEvent);
   }
 
   formatDate(date:string){

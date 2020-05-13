@@ -7,11 +7,11 @@ import { Injectable } from '@angular/core';
 })
 export class CategoriesService {
 
-  private URL = 'http://localhost:3000';
+  
 
   constructor(private http:HttpClient) { }
 
   getCategories():Observable<any>{
-    return this.http.get(`${this.URL}/api/categories`);
+    return this.http.get(`/api/categories`);
   }
 }
