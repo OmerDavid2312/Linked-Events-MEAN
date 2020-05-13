@@ -25,11 +25,7 @@ export class CreatedEventsComponent implements OnInit {
 
       this.createdEvents = createdEvents;
       this.isFetched = true;
-      setTimeout(()=>{
-        this.spinner.hide();
-
-      },1000)
-
+      this.spinner.hide();
     },err=>{
       //unauthorized
       if(err.status == 401)

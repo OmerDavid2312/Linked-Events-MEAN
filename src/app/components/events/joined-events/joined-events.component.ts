@@ -25,10 +25,7 @@ export class JoinedEventsComponent implements OnInit {
     this.eventSrv.getJoinedEvents().subscribe(joinedEvents=>{
       this.joinedEvents = joinedEvents;
       this.isFetched = true;
-      setTimeout(()=>{
-        this.spinner.hide();
-      },400)
-
+      this.spinner.hide();
     },err=>{
      //unauthorized
       if(err.status == 401)
