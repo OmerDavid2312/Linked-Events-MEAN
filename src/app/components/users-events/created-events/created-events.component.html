@@ -14,18 +14,27 @@
         Add your first Event and join the party !
     </div>
     <div>
-      <button routerLink="/myevents/add" class="btn mt-3 btn-success font-weight-bold"><i class="fas fa-plus mr-2"></i>Add your first Event </button>
+      <button routerLink="/myevents/add"  class="btn mt-3 btn-success font-weight-bold"><i class="fas fa-plus mr-2"></i>Add your first Event </button>
     </div>
 </div>
 </div>
 
 <div class="container" >
   <flash-messages></flash-messages>
+  <div class="row mt-2">
+    <div class="col-lg-8 float-left">
+      
+    </div>
+    <div class="col-lg-4 mt-3 float-right">
+      <button routerLink="/myevents/add" class=" fixed btn  float-right fixed btn-success font-weight-bold"><i class="fas fa-plus mr-2"></i>Add Event</button>
 
-  <div class="row mt-5" *ngIf="isFetched">
+
+    </div>
+  </div>
+  <div class="row " *ngIf="isFetched">
       <div class="col-lg-8" *ngIf="createdEvents.length>0">
         <div *ngFor="let event of createdEvents" class="col">
-            <div class="card border-main primary mb-3" style="width: 100%;">
+            <div class="card border-main primary mb-3 fade-in" style="width: 100%;">
                 <div class="card-header text-white"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{myeventSrv.formatDate(event.eventdate)}}
                   <a *ngIf="nowDate>getDate(event.eventdate)" class="btn btn-outline-danger ml-5 float-right text-muted"><i class="fas fa-calendar-times mr-2 "></i>Past Event</a>
 
@@ -53,11 +62,7 @@
         
           </div>
       </div>
-      <div *ngIf="createdEvents.length>0" class="col-lg-4 text-white mt-4 text-center " style="font-size: 1.1rem;">
-           <button routerLink="/myevents/add" class="btn btn-block btn-success font-weight-bold"><i class="fas fa-plus mr-2"></i>Add</button>
-            <button  class="btn btn-block primary font-weight-bold text-white" style="cursor:text !important;"><i class="fas fa-calendar-check text-main mr-2"></i>  Enjoy your Hosted Events</button>     
-            <button  class="btn btn-block primary font-weight-bold text-white" style="cursor:text !important;">  <i class="fas fa-thumbs-up  mr-2 text-main mr-2"></i>{{createdEvents.length}} Events</button>
-      </div>
+
 
 
 

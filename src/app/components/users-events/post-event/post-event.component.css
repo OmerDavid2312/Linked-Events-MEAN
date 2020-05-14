@@ -1,8 +1,7 @@
-.bg-sandybrown{
-    background-color: sandybrown;
-}
 
-.bg-navy{
-    background-color: navy;
+@media (min-width: 1200px){
+    .container{
+        max-width: 920px !important;
+    }
 }
 

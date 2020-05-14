@@ -10,3 +10,32 @@
 }
 
 .btn-outline-danger:hover{color: white !important;}
+.fixed{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    /* left: 0; */
+    margin-right: 25% !important;
+    margin-bottom: 85px !important;
+    margin-top: 45px;
+    z-index: 1030;
+    border-radius: 50px;
+    
+    
+}
+
+@media (max-width: 992px){
+    .fixed{
+        position: fixed;
+        right: 0;
+        
+       
+        /* left: 0; */
+        margin-right: 8px !important;
+        margin-bottom: 25px !important;
+        margin-top: 45px;
+        z-index: 1030;
+        border-radius: 50px;
+        
+    }
+}

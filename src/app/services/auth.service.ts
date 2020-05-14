@@ -8,16 +8,16 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  
+  private URL = 'http://localhost:3000';
   
   constructor(private http:HttpClient) { }
 
   registerUser(user:AuthData):Observable<any>{
-    return this.http.post<any>(`/api/users/register`,user);
+    return this.http.post<any>(`${this.URL}/api/users/register`,user);
   }
 
   loginUser(user:AuthData):Observable<any> {
-    return this.http.post<any>(`/api/users/login`,user);
+    return this.http.post<any>(`${this.URL}/api/users/login`,user);
   }
 
   isLoggedIn():boolean{

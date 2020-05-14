@@ -7,42 +7,42 @@ import { Injectable } from '@angular/core';
 })
 export class EventsService {
 
-  
+  private URL = 'http://localhost:3000';
 
   constructor(private http:HttpClient) { }
 
   getEvents():Observable<any>{
-    return this.http.get(`/api/events`);
+    return this.http.get(`${this.URL}/api/events`);
   }
 
   getNewEvents():Observable<any>{
-    return this.http.get(`/api/events/new`);
+    return this.http.get(`${this.URL}/api/events/new`);
   }
 
   getEventsBasedProfile():Observable<any>{
-    return this.http.get(`/api/events/basedProfile`);
+    return this.http.get(`${this.URL}/api/events/basedProfile`);
   }
   
 
   getEventsByCategory(categoryID:string,currentPage:number):Observable<any>{
      
-    return this.http.get(`/api/events/category/${categoryID}/${currentPage}`);
+    return this.http.get(`${this.URL}/api/events/category/${categoryID}/${currentPage}`);
   }
 
   getPopularEvents():Observable<any>{
-    return this.http.get(`/api/events/popular`);
+    return this.http.get(`${this.URL}/api/events/popular`);
   }
 
   getEventDetails(eventid:string):Observable<any>{
-    return this.http.get(`/api/events/id/${eventid}`);
+    return this.http.get(`${this.URL}/api/events/id/${eventid}`);
   }
 
   getJoinedEvents():Observable<any>{
-    return this.http.get(`/api/events/joined`);
+    return this.http.get(`${this.URL}/api/events/joined`);
   }
 
   joinEvent(eventid:string):Observable<any>{
-    return this.http.patch(`/api/events/join/${eventid}`,{_id:eventid});
+    return this.http.patch(`${this.URL}/api/events/join/${eventid}`,{_id:eventid});
   }
 
   formatDate(date:string){

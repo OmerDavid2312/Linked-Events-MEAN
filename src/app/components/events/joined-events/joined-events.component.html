@@ -23,7 +23,7 @@
   <div class="row mt-5">
       <div class="col-lg-8" *ngIf="joinedEvents.length>0">
         <div *ngFor="let event of joinedEvents" class="col">
-            <div class="card border-main primary mb-3" style="width: 100%;" *ngIf="isFetched">
+            <div class="card border-main primary mb-3 fade-in" style="width: 100%;" *ngIf="isFetched">
                 <div class="card-header text-white"><i class="fas fa-calendar-week mr-2 text-main"></i>  {{eventSrv.formatDate(event.eventdate)}}
                   <a *ngIf="nowDate>getDate(event.eventdate)" class="btn btn-outline-danger ml-5 float-right text-muted"><i class="fas fa-calendar-times mr-2 "></i>Past Event</a>
                   <a *ngIf="getDate(event.eventdate)>=nowDate" class="btn btn-outline-orange ml-5 float-right" [href]="event.link" role="button" target="_blank"><i class="fas fa-mouse-pointer mr-2"></i>Join</a>
@@ -49,8 +49,7 @@
           </div>
       </div>
       <div class="col-lg-4 text-white " style="font-size: 1.1rem;" *ngIf="isFetched && joinedEvents.length>0 ">
-        <button  class="btn btn-block primary font-weight-bold text-white" style="cursor:text !important;"><i class="fas fa-calendar-check text-main mr-2"></i>  Enjoy your Attends</button>     
-        <button  class="btn btn-block primary font-weight-bold text-white mb-5" style="cursor:text !important;">  <i class="fas fa-thumbs-up  mr-2 text-main mr-2"></i>{{joinedEvents.length}} Events</button>
+
         <app-calendar *ngIf="joinedEvents" [events]="joinedEvents"></app-calendar>
 
       </div>
