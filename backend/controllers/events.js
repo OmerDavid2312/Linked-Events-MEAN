@@ -210,7 +210,7 @@ exports.popularEvents = async(req,res,next)=>{
         
         const events_aggregate_pipeline = await Event.aggregate([
             {
-                $match: { creator: { $ne: mongoose.Types.ObjectId(userId) } },
+                $match: { creator: { $ne: mongoose.Types.ObjectId(userId) },eventdate:{$gte:new Date()} },
             },
             {
                 $lookup: {
