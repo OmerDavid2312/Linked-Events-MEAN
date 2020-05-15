@@ -29,6 +29,8 @@ Full Stack WEB application that Connect people with online events from home. Cre
   <li>Calendar of events the user attended </li>
   <li>Notfication abouts user's today events</li>
 </ul>
+<hr>
+<br><br>
 
 
 
