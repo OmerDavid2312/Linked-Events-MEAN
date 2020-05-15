@@ -1,6 +1,7 @@
 # LinkedEvents
 Full Stack WEB application that Connect people with online events from home. Created with MongoDB, Express, Angular, NodeJs (MEAN)
 <hr>
+<h5>Click the picture to watch the video</h5>
 
 [![asciicast](https://i.imgur.com/QtKrUa6.png)](https://www.youtube.com/embed/1gqQiQbVdqg)
 
