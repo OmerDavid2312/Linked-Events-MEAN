@@ -1,6 +1,7 @@
 # LinkedEvents
 Full Stack WEB application that Connect people with online events from home. Created with MongoDB, Express, Angular, NodeJs (MEAN)
 <hr>
+## How to install
 *To install this project, Run the command : npm install <br>
 *Make sure to change ENV varibale: <br>
 1) backend/server.js (MONGO). <br>
