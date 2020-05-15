@@ -13,6 +13,13 @@ Full Stack WEB application that Connect people with online events from home. Cre
 <b>Server Side:</b> Node.js, Express, JWT <br>
 <b>Database:</b> MongoDB<br>
 <hr>
+<b>Features</b>
+<ul>
+  <li>Register and Login with Authentication with JWT</li>
+  <li>Filter Events by categories, Popular Online Events, New Events,Based Your Profile</li>
+  <li>Get specific event information to join like title, date, creator, Attendees, Max Participants,Percentage of participants, category
+  </li>
+</ul>
 
 
 
