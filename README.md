@@ -9,7 +9,7 @@ Full Stack WEB application that Connect people with online events from home. Cre
 <h2>How to install</h2>
 
 *To install this project, Run the command : npm install <br>
-*Make sure to change ENV varibale: <br>
+*Make sure to change ENV varibales: <br>
 1) backend/server.js (MONGO). <br>
 2) backend/controllers/users.js (SECRET_TOKEN). <br>
 3) backend/middlewares/is-auth.js (SECRET_TOKEN).<br>
