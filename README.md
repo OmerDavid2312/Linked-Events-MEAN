@@ -14,6 +14,7 @@ Full Stack WEB application that Connect people with online events from home. Cre
 2) backend/controllers/users.js (SECRET_TOKEN). <br>
 3) backend/middlewares/is-auth.js (SECRET_TOKEN).<br>
 <hr>
+<h2>Technologies</h2>
 <b>Client Side:</b> Angular, TypeScript <br>
 <b>Server Side:</b> Node.js, Express, JWT <br>
 <b>Database:</b> MongoDB<br>
