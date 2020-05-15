@@ -8,7 +8,7 @@ const eventsController = require('../controllers/events');
 const postEventValidation = [
     check('name').not().isEmpty().trim(),
     check('description').not().isEmpty().trim(),
-    check('link').isURL()
+    check('link').isURL().withMessage('Not valid URL')
     ];
     
 //MY Events HUB

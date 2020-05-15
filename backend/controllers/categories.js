@@ -31,28 +31,3 @@ exports.getCategory =  async (req,res,next)=>{
 
 }
 
-exports.addCategory = async (req,res,next) =>{
-
-     //validation
-     const errors = validationResult(req);
-     if (!errors.isEmpty()) {
-       return res.status(422).json({ errors: errors.array() });
-     }
-
-    try {
-        const name = req.body.name;
-        const icon = req.body.icon
-        if(!name) return res.status(500).json({message: 'Can not add category'});
-        const category = await new Category({
-            name: name,
-            icon: icon
-        });
-        const savedCategory = await category.save();
-        res.status(200).json(savedCategory);    
-        
-
-    } catch (error) {
-        res.status(500).json({message: 'Faild to add Category'});
-    }
-
-}

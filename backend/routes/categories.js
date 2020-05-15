@@ -9,7 +9,6 @@ const categoryValidation = [check('name').not().isEmpty().trim()];
 
 router.get('',isAuth,categoriesController.allCategories);
 router.get('/:id',isAuth,categoriesController.getCategory);
-router.post('',categoryValidation,categoriesController.addCategory);
 
 
 module.exports = router;
