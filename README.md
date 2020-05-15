@@ -1,4 +1,19 @@
 # LinkedEvents
+Full Stack WEB application that Connect people with online events from home. Created with MongoDB, Express, Angular, NodeJs (MEAN)
+<hr>
+*To install this project, Run the command : npm install
+*Make sure to change ENV varibale:
+1) backend/server.js (MONGO).
+2) backend/controllers/users.js (SECRET_TOKEN).
+3) backend/middlewares/is-auth.js (SECRET_TOKEN).
+<hr>
+<b>Client Side: Angular, TypeScript <br>
+<b>Server Side:</b> Node.js, Express, JWT <br>
+<b>Database:</b> MongoDB<br>
+<hr>
+
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.14.
 
