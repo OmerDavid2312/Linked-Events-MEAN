@@ -21,7 +21,7 @@ Full Stack WEB application that Connect people with online events from home. Cre
 <hr>
 <h2>Features</h2>
 <ul>
-  <li>Register and Login with Authentication with JWT</li>
+  <li>Register and Login with Authentication (JWT)</li>
   <li>Filter Events by categories, Popular Online Events, New Events, Based Your Profile</li>
   <li>Get specific event information to join like title, date, creator, Attendees, Max Participants,Percentage of participants, category
   </li>
