@@ -1,27 +1,48 @@
 <div class="card mb-3 primary fade-in" style="max-width: 35rem; box-shadow: 0 0 30px rgba(0,0,0,.15);">
   
 
-    <div class="card-header mt-3 text-center">
-        <h2>Register</h2>
-    </div>
-    <flash-messages></flash-messages>
-    <div class="card-body text-main font-weight-bold">
-        <form (submit)="onSubmit()">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" [(ngModel)]="email" id="email" name="email"  placeholder="user@email.com">
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" [(ngModel)]="password" id="password" name="password" placeholder="****">
-            </div>
-            <div class="form-group">
-                <label for="name">Username</label>
-                <input type="text" class="form-control" [(ngModel)]="username" id="name" name="name" placeholder="Alex">
+  <div class="card-header mt-3 text-center">
+      <h2>Register</h2>
+  </div>
+  <flash-messages></flash-messages>
+  <div class="card-body text-main font-weight-bold">
+      <form (submit)="onSubmit()">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" [(ngModel)]="email" #emailinput="ngModel" id="email" name="email" placeholder="user@email.com" required>
+            <div *ngIf="emailinput.invalid && emailinput.touched" class="alert alert-danger">
+              <div *ngIf="emailinput.errors.required">
+                Email is required.
               </div>
 
-            <button type="submit" class="btn btn-block btn-main text-white font-weight-bold" [disabled]="!username || !email || !password">Register</button>
-          </form>
-          <a routerLink="/login" class="btn mt-1 btn-dark btn-block">Have an account ? Login here</a>
-    </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" [(ngModel)]="password" #passwordinput="ngModel" id="password" name="password" placeholder="****" minlength="5" required>
+            <div *ngIf="passwordinput.invalid && passwordinput.touched" class="alert alert-danger">
+              <div *ngIf="passwordinput.errors.required">
+                Password is required.
+              </div>
+              <div *ngIf="passwordinput.errors.minlength">
+                password must containt at least 5 characters
+              </div>
+
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="name">Username</label>
+              <input type="text" class="form-control" #usernameinput="ngModel" [(ngModel)]="username" id="name" name="name" placeholder="Alex" required>
+              <div *ngIf="usernameinput.invalid && usernameinput.touched" class="alert alert-danger">
+                <div *ngIf="usernameinput.errors.required">
+                  Username is required.
+                </div>
+
+              </div>
+            </div>
+
+          <button type="submit" class="btn btn-block btn-main text-white font-weight-bold" [disabled]="!username || !email || !password || password.length<5">Register</button>
+        </form>
+        <a routerLink="/login" class="btn mt-1 btn-dark btn-block">Have an account ? Login here</a>
   </div>
+</div>

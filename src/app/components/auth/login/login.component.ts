@@ -25,6 +25,10 @@ export class LoginComponent implements OnInit {
     if(!this.email.trim() || !this.password.trim()){
       return this.flashmessage.show('Please fill out the form',{cssClass:'alert-danger',timeout:4000});
     }
+    if(this.password.trim().length <5)
+    {
+      return this.flashmessage.show('password must containt at least 5 characters',{cssClass:'alert-danger text-center font-weight-bold',timeout:4000});
+    }
     this.spinner.show();
 
     this.user = {email:this.email,password:this.password};

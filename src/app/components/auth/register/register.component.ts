@@ -25,6 +25,10 @@ export class RegisterComponent implements OnInit {
     if(!this.email.trim() || !this.password.trim() || !this.username.trim()){
       return this.flashmessage.show('Please fill out the form',{cssClass:'alert-danger',timeout:4000});
     }
+    if(this.password.trim().length <5)
+    {
+      return this.flashmessage.show('password must containt at least 5 characters',{cssClass:'alert-danger text-center font-weight-bold',timeout:4000});
+    }
 
     this.user = {email:this.email,password:this.password,name:this.username};
     this.authSrv.registerUser(this.user).subscribe(res=>{
