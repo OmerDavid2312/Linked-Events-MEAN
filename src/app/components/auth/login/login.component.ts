@@ -39,11 +39,11 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('user',res.user);
       this.spinner.hide();
       
-      this.flashmessage.show('You have successfully logged in',{cssClass:'alert-success text-center font-weight-bold',timeout:3000});
+      this.flashmessage.show('You have successfully logged in',{cssClass:'alert-success text-center font-weight-bold',timeout:2000});
       setTimeout(()=>{
         this.router.navigateByUrl('/');
 
-      },3000);
+      },2000);
 
     },err=>{
        const error =  err.error.message || err.error.errors[0]['msg'];
