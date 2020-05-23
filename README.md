@@ -1,4 +1,40 @@
 # LinkedEvents
+Full Stack WEB application that Connect people with online events from home. Created with MongoDB, Express, Angular, NodeJs (MEAN)
+<hr>
+<h5>Click the picture to watch the video</h5>
+
+[![asciicast](https://i.imgur.com/QtKrUa6.png)](https://www.youtube.com/embed/1gqQiQbVdqg)
+
+<hr>
+<h2>How to install</h2>
+
+*To install this project, Run the command : npm install <br>
+*Make sure to change ENV varibales: <br>
+1) backend/server.js (MONGO). <br>
+2) backend/controllers/users.js (SECRET_TOKEN). <br>
+3) backend/middlewares/is-auth.js (SECRET_TOKEN).<br>
+<hr>
+<h2>Technologies</h2>
+<b>Client Side:</b> Angular, TypeScript <br>
+<b>Server Side:</b> Node.js, Express, JWT <br>
+<b>Database:</b> MongoDB<br>
+<hr>
+<h2>Features</h2>
+<ul>
+  <li>Register and Login with Authentication (JWT)</li>
+  <li>Filter Events by categories, Popular Online Events, New Events, Based Your Profile</li>
+  <li>Get specific event information to join like title, date, creator, Attendees, Max Participants,Percentage of participants, category
+  </li>
+  <li>Share an event through social medias</li>
+  <li>Create, Read, Update, Delete events</li>
+  <li>Calendar of events the user attended </li>
+  <li>Notfication abouts user's today events</li>
+</ul>
+<hr>
+<br><br>
+
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.14.
 
